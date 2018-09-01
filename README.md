@@ -8,5 +8,5 @@ The codes were written in python and use ROS platform as a programming environme
 I am still working on this repository... Next update is to work with pose estimation of the human hand in order to manipulate the gripper of my robot, everything as to controlling the robot and gripper will be in real time with the help of the web camera!!!!....... keep waiting!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-By: Casch
-By: Casch
+### By: Casch
+
