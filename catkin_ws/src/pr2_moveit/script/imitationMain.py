@@ -62,9 +62,9 @@ def main():
         sampleList=keyOBJ.get_keypoints(pose)
 
         # get the sample with a new shape from 1D array into 2D array
-        print('im here',len(sampleList))
+        print('wit the list:',len(sampleList))
         sampleArray=sample_reshape(sampleList)
-        print('im here',sampleArray.shape)
+        print('with the array:',sampleArray.shape)
 
         '''
         #Mapping from the pose estimation frame into the robot frame
