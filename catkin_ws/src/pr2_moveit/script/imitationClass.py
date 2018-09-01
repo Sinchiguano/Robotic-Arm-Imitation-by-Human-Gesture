@@ -19,13 +19,10 @@ from tqdm import *
 from matplotlib import pyplot as plt
 from tf_pose.estimator import TfPoseEstimator
 from tf_pose.networks import get_graph_path, model_wh
-
 from keras.models import model_from_json
 import numpy,h5py
 import os
-
 jointsNames=joints
-
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
@@ -62,35 +59,16 @@ class moveGroup(object):
         self.rosInit_OBJECT=rosInit()
         self.tmp_joints=jointsNames
 
-    def go_to_joint_state(self,y_hat1):
+    def go_to_joint_state(self,counter,y_hat1):
         group = self.rosInit_OBJECT.group
 
         ## Planning to a joint-space goal
         #================================
         print('#================================')
-        joint_goal=group.get_random_joint_values()
-        print(joint_goal)
-        print(type(joints))
-        print(len(joint_goal))
-
-        joint_goal=y_hat1
-        print(joint_goal)
-        print(type(joint_goal))
-        print(joint_goal.shape)
-        print('=====================')
+        #joint_goal=group.get_random_joint_values()
         y_hat1=y_hat1.reshape(7,)
-        print(y_hat1.shape)
-
-        print('=====================')
+        #print(y_hat1.shape)
         joint_goal=y_hat1.tolist()
-        print(joint_goal)
-        print(len(joint_goal))
-        print(type(joint_goal))
-
-
-
-        exit(0)
-
 
         print "============ Joint values: "
         for i in range(len(joint_goal)):
@@ -103,7 +81,7 @@ class moveGroup(object):
         #group.execute(plan)
 
         print "============ Waiting while RVIZ displays plan..."
-        print('Counte:',counter)
+        print('Counter:',counter)
         print('done!!!')
 
 class poseEstimation(object):
@@ -131,6 +109,7 @@ class keyPoints(object):
         self.tmp_xy=list()
 
     def get_keypoints(self,predictions):
+        points_2d=list()
         for human in predictions:
             points_2d,visibility=common.MPIIPart.from_coco(human);
         for i in range(len(points_2d)):
