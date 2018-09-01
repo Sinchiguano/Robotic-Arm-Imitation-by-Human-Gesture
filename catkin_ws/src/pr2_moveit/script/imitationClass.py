@@ -11,22 +11,10 @@
 """
 
 from imitationLibrary import*
-import numpy as np
-import cv2
-import sys
-import time
-from tqdm import *
-from matplotlib import pyplot as plt
-from tf_pose.estimator import TfPoseEstimator
-from tf_pose.networks import get_graph_path, model_wh
-from keras.models import model_from_json
-import numpy,h5py
-import os
+
+
 jointsNames=joints
-import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation
-from keras.optimizers import SGD
+
 
 class rosInit(object):
     '''

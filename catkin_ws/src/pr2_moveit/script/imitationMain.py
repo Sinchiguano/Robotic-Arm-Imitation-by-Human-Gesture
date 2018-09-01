@@ -16,13 +16,8 @@ from sklearn.externals import joblib
 def sample_reshape(sample):
     print('========================')
     sample=np.asarray(sample)
-    # print('Sample shape before:',sample.shape)
-    # print('type:',type(sample))
     sample=sample.reshape((1,6))
-    # print('Sample shape after:',sample.shape)
-    # print('type:',type(sample))
     return sample
-
 
 def main():
 
