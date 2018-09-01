@@ -1,0 +1,8 @@
+prefix=/home/casch/Dropbox/humanoid_robot/catkin_ws/install
+
+Name: pr2_moveit
+Description: Description of pr2_moveit
+Version: 0.0.0
+Cflags: -I/usr/include/eigen3
+Libs: -L/home/casch/Dropbox/humanoid_robot/catkin_ws/install/lib 
+Requires: moveit_core moveit_ros_planning_interface interactive_markers
