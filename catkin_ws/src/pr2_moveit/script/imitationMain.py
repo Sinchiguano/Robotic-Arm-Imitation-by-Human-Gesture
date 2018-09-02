@@ -36,25 +36,28 @@ def main():
     #Instantiate an object in order to plot the data set
     plotOBJ=dataPlot()
 
-    print "============ Press `Enter` to start (press ctrl-d to exit) ......"
+    print "============ Press `Enter` to initialize (press ctrl-d to exit) ......"
     raw_input()
+    time.sleep(3)
 
     counter=0
     while(True):
         counter+=1
-
         # Capture frame-by-frame
-        #_, frame = cap.read()
+        _, frame = cap.read()
 
         #Estimate human poses from a single image
-        pose=pose_OBJ.model_PEST.inference(tmp,pose_OBJ.resize_to_default,pose_OBJ.resize_out_ratio)
+        pose=pose_OBJ.model_PEST.inference(frame,pose_OBJ.resize_to_default,pose_OBJ.resize_out_ratio)
 
         # draw points and draw lines
-        img= TfPoseEstimator.draw_humans(tmp, pose, imgcopy=False)
+        img= TfPoseEstimator.draw_humans(frame, pose, imgcopy=False)
 
         # show img with cv2 when working with the camera
-        #cv2.imshow('Pose Estimation', img)
+        cv2.imshow('Pose Estimation', img)
 
+        if  cv2.waitKey(1) & 0xFF== ord('s'):
+            print('Goodbye!!!')
+            break
         # show image with matplotlib when working with a single image
         #plotOBJ.plotting(img)
 
@@ -86,9 +89,9 @@ def main():
 
 
 if __name__=='__main__':
-    tmp='images/q1.jpg'
+    #tmp='images/q1.jpg'
     #Load the image
-    tmp= cv2.imread(tmp, cv2.IMREAD_COLOR)
+    #tmp= cv2.imread(tmp, cv2.IMREAD_COLOR)
     try:
         main()
     except rospy.ROSInterruptException:

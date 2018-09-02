@@ -67,7 +67,7 @@ class moveGroup(object):
         plan = group.plan()
         #When working with the real robot uncomment the following line...
         #group.execute(plan)
-
+        del joint_goal[:]
         print "============ Waiting while RVIZ displays plan..."
         print('Counter:',counter)
         print('done!!!')
