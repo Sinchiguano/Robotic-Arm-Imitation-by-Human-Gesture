@@ -65,6 +65,7 @@ class moveGroup(object):
         group.set_joint_value_target(joint_goal)
 
         plan = group.plan()
+
         #When working with the real robot uncomment the following line...
         #group.execute(plan)
         del joint_goal[:]
@@ -120,11 +121,7 @@ class mappingRobot(object):
         self.loaded_model = model_from_json(self.loaded_model_json)
         # load weights into new model
         self.loaded_model.load_weights("nn_keras/model.h5")
-        self.sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-        # evaluate loaded model on test data
-        self.loaded_model.compile(loss='categorical_crossentropy',
-                      optimizer=self.sgd,
-                      metrics=['accuracy'])
+        self.loaded_model.compile(loss='mean_squared_error', optimizer='rmsprop')
 
 class dataPlot(object):
     '''
